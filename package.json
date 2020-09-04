@@ -1,0 +1,27 @@
+{
+  "name": "Assignment",
+  "version": "1.0.0",
+  "description": "Test Assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon --exec babel-node api/server",
+    "start": "npm run build && node dist/server",
+    "build": "rimraf dist/ && babel api/ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files"
+  },
+  "author": "Sahil",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.2",
+    "express-validator": "^6.5.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "morgan": "^1.10.0",
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.10.3"
+  }
+}
