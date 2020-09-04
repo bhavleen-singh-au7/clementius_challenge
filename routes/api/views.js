@@ -16,6 +16,25 @@ router.get('/', async (req, res) => {
   }
 });
 
+// @route    PUT /views/:id
+// @desc     Update a view
+// @access   Public
+router.put('/:id', async (req, res) => {
+  try {
+    const view = await User.findByIdAndUpdate(req.params.id);
+
+    res.json({ msg: "Data Updated" });
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({
+        msg: "Data not found"
+      });
+    }
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route    DELETE views/:id
 // @desc     Delete a view
 // @access   Public

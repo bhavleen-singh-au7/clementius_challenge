@@ -3,8 +3,10 @@ import { createUser } from "../redux/actions/createUser";
 import { setAlert } from "../redux/actions/alert";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+import { Redirect } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
-const Create = ({ setAlert, createUser }) => {
+const Create = ({ createUser }) => {
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -23,7 +25,8 @@ const Create = ({ setAlert, createUser }) => {
 
     createUser({ firstName, lastName, email, dob, shortBio });
 
-    setAlert("User Created.");
+    toast.success("User Created");
+
     setFormData({
       ...formData,
       firstName: "",
@@ -36,8 +39,9 @@ const Create = ({ setAlert, createUser }) => {
 
   return (
     <Fragment>
-      <div className="d-flex justify-content-center">
-        <div className="text-center p-5 shadow-lg p-3 mb-5 color rounded-lg">
+      <div className="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2">
+        <ToastContainer />
+        <div className="text-center mx-2 p-5 shadow-lg color rounded-lg">
           <h1 className="display-3 font-weight-bold">User</h1>
 
           <h3 className="py-3">

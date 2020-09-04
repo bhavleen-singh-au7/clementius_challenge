@@ -31,7 +31,7 @@ const ViewItem = ({
             <button
               onClick={e => edit(_id)}
               type="button"
-              className="btn btn-light rounded-circle shadow"
+              className="btn btn-light rounded-circle shadow m-1"
             >
               <i className="fa fa-edit"></i>
             </button>
@@ -39,7 +39,7 @@ const ViewItem = ({
             <button
               onClick={e => trash(_id)}
               type="button"
-              className="btn btn-danger text-light rounded-circle shadow"
+            className="btn btn-danger text-light rounded-circle shadow m-1"
             >
               <i className="fa fa-trash"></i>
             </button>

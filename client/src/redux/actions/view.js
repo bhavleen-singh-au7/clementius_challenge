@@ -6,6 +6,7 @@ import {
   EDIT_SINGLE_VIEW,
   TRASH_SINGLE_VIEW
 } from "./types";
+import { toast } from "react-toastify";
 
 // Get Views
 export const getViews = () => async dispatch => {
@@ -26,9 +27,19 @@ export const getViews = () => async dispatch => {
 
 // Edit View
 export const edit = id => async dispatch => {
-  // try {
-  //   await axios.put(`/view/${id}`)
-  // }
+  try {
+    await axios.put(`/view/${id}`);
+    dispatch({
+      type: TRASH_SINGLE_VIEW,
+      payload: id
+    });
+    toast.error("Data Cleared");
+  } catch (err) {
+    dispatch({
+      type: VIEW_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
 };
 
 // Trash View
@@ -39,8 +50,7 @@ export const trash = id => async dispatch => {
       type: TRASH_SINGLE_VIEW,
       payload: id
     });
-
-    dispatch(setAlert("Data Cleared", "success"));
+    toast.error("Data Cleared");
   } catch (err) {
     dispatch({
       type: VIEW_ERROR,
