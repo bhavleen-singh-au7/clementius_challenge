@@ -29,7 +29,7 @@ const ViewItem = ({
         {showActions &&
           <Fragment>
             <button
-              handleClick={e => edit(_id)}
+              onClick={e => edit(_id)}
               type="button"
               className="btn btn-light rounded-circle shadow"
             >
@@ -37,7 +37,7 @@ const ViewItem = ({
             </button>
             {"  "}
             <button
-              handleClick={e => trash(_id)}
+              onClick={e => trash(_id)}
               type="button"
               className="btn btn-danger text-light rounded-circle shadow"
             >

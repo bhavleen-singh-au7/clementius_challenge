@@ -31,16 +31,16 @@ export default function (state = initialState, action) {
     case EDIT_SINGLE_VIEW:
       return {
         ...state,
-        posts: state.posts.map(post => post._id === payload.id ? {
-          ...post,
+        views: state.views.map(view => view._id === payload.id ? {
+          ...view,
           likes: payload.likes
-        } : post),
+        } : view),
         loading: false
       };
     case TRASH_SINGLE_VIEW:
       return {
         ...state,
-        posts: state.posts.filter(post => post._id !== payload),
+        views: state.views.filter(view => view._id !== payload),
         loading: false
       };
     default:

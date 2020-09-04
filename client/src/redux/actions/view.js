@@ -34,8 +34,17 @@ export const edit = id => async dispatch => {
 // Trash View
 export const trash = id => async dispatch => {
   try {
-    await axios.put(`/view/${id}`);
-  } catch (err) {
+    await axios.delete(`/view/${id}`);
+    dispatch({
+      type: TRASH_SINGLE_VIEW,
+      payload: id
+    });
 
+    dispatch(setAlert("Data Cleared", "success"));
+  } catch (err) {
+    dispatch({
+      type: VIEW_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 };

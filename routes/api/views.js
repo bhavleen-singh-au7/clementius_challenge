@@ -16,4 +16,30 @@ router.get('/', async (req, res) => {
   }
 });
 
+// @route    DELETE views/:id
+// @desc     Delete a view
+// @access   Public
+router.delete('/:id', async (req, res) => {
+  try {
+    const view = await User.findById(req.params.id);
+
+    if (!view) {
+      return res.status(404).json({ msg: 'Data not found' });
+    }
+
+    await view.remove();
+
+    res.json({ msg: 'Data Cleared' });
+
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === "ObjectId") {
+      return res.status(404).json({
+        msg: "Data not found"
+      });
+    }
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;
