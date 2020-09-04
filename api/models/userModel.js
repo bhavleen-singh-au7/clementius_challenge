@@ -18,11 +18,7 @@ const userModel = new Schema({
   bio: {
     type: String,
     required: true,
-  },
-  created_at: {
-    type: Date,
-    default: Date.now(),
-  },
+  }
 });
 
 export default new model("user", userModel);
