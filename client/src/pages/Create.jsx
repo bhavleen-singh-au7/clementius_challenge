@@ -1,6 +1,33 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { createUser } from "../redux/actions/createUser";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../redux/actions/alert";
+import PropTypes from 'prop-types';
 
-const Create = () => {
+const Create = ({ setAlert, createUser }) => {
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    dob: "",
+    shortBio: ""
+  });
+
+  const { firstName, lastName, email, dob, shortBio } = formData;
+
+  const handleChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+
+    console.log("hello");
+    createUser({ firstName, lastName, email, dob, shortBio });
+
+    return <Redirect to="/view" />;
+  };
+
   return (
     <Fragment>
       <div className="d-flex justify-content-center">
@@ -13,7 +40,7 @@ const Create = () => {
             Create Your Account
          </h3>
 
-          <form>
+          <form onSubmit={e => handleSubmit(e)}>
             <div className="form-group">
               <input
                 type="text"
@@ -22,8 +49,8 @@ const Create = () => {
                 autoComplete="off"
                 name="firstName"
                 required
-              // value={name}
-              // onChange={e => onChange(e)}
+                value={firstName}
+                onChange={e => handleChange(e)}
               />
             </div>
 
@@ -35,8 +62,8 @@ const Create = () => {
                 autoComplete="off"
                 name="lastName"
                 required
-              // value={name}
-              // onChange={e => onChange(e)}
+                value={lastName}
+                onChange={e => handleChange(e)}
               />
             </div>
 
@@ -47,8 +74,8 @@ const Create = () => {
                 placeholder="Email Address"
                 name="email"
                 autoComplete="off"
-                // value={email}
-                // onChange={e => onChange(e)}
+                value={email}
+                onChange={e => handleChange(e)}
                 required
               />
             </div>
@@ -60,23 +87,23 @@ const Create = () => {
                 placeholder="DOB"
                 name="dob"
                 required
-              // value={password}
-              // onChange={e => onChange(e)}
+                value={dob}
+                onChange={e => handleChange(e)}
               />
             </div>
             <div className="form-group">
               <textarea
                 className="form-control mb-3"
                 placeholder="Short Bio"
-                name="bio"
+                name="shortBio"
                 required
                 maxLength="25"
-              // value={password2}
-              // onChange={e => onChange(e)}
+                value={shortBio}
+                onChange={e => handleChange(e)}
               />
             </div>
             <input type="submit" className="btn
-             btn-outline-primary btn-block my-3" value="Create" />
+             btn-outline-primary btn-block my-4" value="Create" />
           </form>
         </div>
       </div>
@@ -84,4 +111,9 @@ const Create = () => {
   );
 };
 
-export default Create;
+Create.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert, createUser })(Create);
