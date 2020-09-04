@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Switch, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Create from "./pages/Create";
-import View from "./pages/View";
+import View from "./pages/Views/View";
 
 const Routes = () => {
   return (

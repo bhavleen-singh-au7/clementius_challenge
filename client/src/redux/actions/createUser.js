@@ -7,7 +7,7 @@ import { setAlert } from "./alert";
 
 export const createUser = ({ firstName, lastName, email, dob, shortBio }) => async dispatch => {
   const config = {
-    header: {
+    headers: {
       "Content-Type": "application/json"
     }
   };

@@ -3,3 +3,9 @@ export const REMOVE_ALERT = "REMOVE_ALERT";
 
 export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
 export const CREATE_USER_FAIL = "CREATE_USER_FAIL";
+
+// VIEWS
+export const GET_VIEWS = "GET_VIEWS";
+export const VIEW_ERROR = "VIEW_ERROR";
+export const EDIT_SINGLE_VIEW = "UPDATE_SINGLE_VIEW";
+export const TRASH_SINGLE_VIEW = "DELETE_SINGLE_VIEW";

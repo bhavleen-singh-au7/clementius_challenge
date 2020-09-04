@@ -1,8 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import { createUser } from "../redux/actions/createUser";
-import { Redirect } from "react-router-dom";
-import { connect } from "react-redux";
 import { setAlert } from "../redux/actions/alert";
+import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 
 const Create = ({ setAlert, createUser }) => {
@@ -22,10 +21,17 @@ const Create = ({ setAlert, createUser }) => {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    console.log("hello");
     createUser({ firstName, lastName, email, dob, shortBio });
 
-    return <Redirect to="/view" />;
+    setAlert("User Created.");
+    setFormData({
+      ...formData,
+      firstName: "",
+      lastName: "",
+      email: "",
+      dob: "",
+      shortBio: ""
+    });
   };
 
   return (
@@ -97,7 +103,7 @@ const Create = ({ setAlert, createUser }) => {
                 placeholder="Short Bio"
                 name="shortBio"
                 required
-                maxLength="25"
+                maxLength="100"
                 value={shortBio}
                 onChange={e => handleChange(e)}
               />
@@ -113,7 +119,7 @@ const Create = ({ setAlert, createUser }) => {
 
 Create.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  createUser: PropTypes.func.isRequired,
+  createUser: PropTypes.func.isRequired
 };
 
 export default connect(null, { setAlert, createUser })(Create);
