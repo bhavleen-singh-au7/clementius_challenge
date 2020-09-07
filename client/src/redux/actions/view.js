@@ -26,14 +26,24 @@ export const getViews = () => async dispatch => {
 };
 
 // Edit View
-export const edit = id => async dispatch => {
+export const edit = ({firstName, lastName, email, dob, shortBio}, id) => async dispatch => {
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+
+  const body = JSON.stringify({ firstName, lastName, email, dob, shortBio });
+
   try {
-    await axios.put(`/view/${id}`);
+    const res = await axios.put(`/view/${id}`, body, config);
+
     dispatch({
-      type: TRASH_SINGLE_VIEW,
-      payload: id
+      type: EDIT_SINGLE_VIEW,
+      payload: res.data
     });
-    toast.error("Data Cleared");
+
   } catch (err) {
     dispatch({
       type: VIEW_ERROR,

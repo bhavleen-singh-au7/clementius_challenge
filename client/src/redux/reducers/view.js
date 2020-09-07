@@ -31,11 +31,8 @@ export default function (state = initialState, action) {
     case EDIT_SINGLE_VIEW:
       return {
         ...state,
-        views: state.views.map(view => view._id === payload.id ? {
-          ...view,
-          likes: payload.likes
-        } : view),
-        loading: false
+        loading: false,
+        payload
       };
     case TRASH_SINGLE_VIEW:
       return {

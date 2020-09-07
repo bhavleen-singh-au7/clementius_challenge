@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { edit, trash } from "../../redux/actions/view";
 import Moment from "react-moment";
+// import EditCreate from "../EditCreate"
 
 const ViewItem = ({
   edit,

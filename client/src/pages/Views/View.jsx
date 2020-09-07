@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getViews } from "../../redux/actions/view";
@@ -7,8 +7,13 @@ import { ToastContainer } from "react-toastify";
 
 const View = ({ getViews, view: { views }, }) => {
 
+  const [colomnName, setColomnName] = useState("")
+  const [sort, setSort] = useState("desc")
+
   const handleSort = (val) =>{
     console.log(val);
+    // setColomnName(colomnName = val)
+
   }
 
   useEffect(() => {
