@@ -21,9 +21,19 @@ router.get('/', async (req, res) => {
 // @access   Public
 router.put('/:id', async (req, res) => {
   try {
-    const view = await User.findByIdAndUpdate(req.params.id);
-
-    res.json({ msg: "Data Updated" });
+    await User.findByIdAndUpdate(
+      {_id: req.params.id},
+      {$set: req.body},
+      {new: true,useFindAndModify:false},
+      (err, user) =>{
+        if(err){
+          return res.status(400).json({
+            error: "Some Error Occurred"
+          })
+        }
+        res.json(user);
+      }
+    );
   } catch (err) {
     console.error(err.message);
     if (err.kind === "ObjectId") {
