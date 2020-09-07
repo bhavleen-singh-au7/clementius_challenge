@@ -7,14 +7,14 @@ import { ToastContainer } from "react-toastify";
 
 const View = ({ getViews, view: { views }, }) => {
 
-  const [colomnName, setColomnName] = useState("")
-  const [sort, setSort] = useState("desc")
+  // const [colomnName, setColomnName] = useState("")
+  // const [sort, setSort] = useState("desc")
 
-  const handleSort = (val) =>{
-    console.log(val);
-    // setColomnName(colomnName = val)
+  // const handleSort = (val) =>{
+  //   console.log(val);
+  //   // setColomnName(colomnName = val)
 
-  }
+  // }
 
   useEffect(() => {
     getViews();
