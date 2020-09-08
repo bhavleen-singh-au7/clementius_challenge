@@ -31,7 +31,7 @@ const View = ({ getViews, view: { views }, }) => {
         <select 
         name="sort" 
         id="sort" 
-        onChange={(e) => handleSort(e.target.value)}
+        // onChange={(e) => handleSort(e.target.value)}
         className="py-1 border border-success mr-2 rounded px-2 mx-2 text-success">
           <option value="">No Sort</option>
           <option value="lastName">Last Name</option>

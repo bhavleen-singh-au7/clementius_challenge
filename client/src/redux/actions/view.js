@@ -1,5 +1,4 @@
 import axios from "axios";
-import { setAlert } from "./alert";
 import {
   GET_VIEWS,
   VIEW_ERROR,
@@ -26,7 +25,7 @@ export const getViews = () => async dispatch => {
 };
 
 // Edit View
-export const edit = ({firstName, lastName, email, dob, shortBio}, id) => async dispatch => {
+export const EditAView = ({firstName, lastName, email, dob, shortBio}, id) => async dispatch => {
 
   const config = {
     headers: {
