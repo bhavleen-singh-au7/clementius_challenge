@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { EditAView } from "../redux/actions/view";
+// import { EditAView } from "../redux/actions/view";
 import { Redirect } from "react-router-dom";
 import {
   ToastContainer,

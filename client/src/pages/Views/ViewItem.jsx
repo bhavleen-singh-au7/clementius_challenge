@@ -6,7 +6,7 @@ import { trash } from "../../redux/actions/view";
 import Moment from "react-moment";
 
 const ViewItem = ({
-  EditView,
+  // EditView,
   trash,
   view: {
     _id,
